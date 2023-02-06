@@ -1,0 +1,35 @@
+.instruction-text {
+    background-color: #ddb892;
+    border-radius: 9px;
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    margin: 0 auto 0;
+    padding: 2% 2%;
+    text-align: center;
+    width: 30%;
+}
+
+.label {
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.1rem;
+    padding: 2%;
+}
+
+.input-form {
+    background-color: black;
+    border-radius: 8px;
+    margin: 1% auto 2%;
+    padding: 2% 3%;
+    width: 35%;
+}
+
+.btn-add-batter {
+    margin-left: 5%;
+}
+
+.btn-all {
+    margin-top: 2%;
+    text-align: center;
+}

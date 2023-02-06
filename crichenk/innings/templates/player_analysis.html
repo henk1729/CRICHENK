@@ -1,0 +1,164 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Player Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <link href="{% static 'player_analysis.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="heading-text">PLAYER ANALYSIS</div>
+
+    <div class="input-form">
+        <div class="label"><strong>Choose player</strong></div>
+        
+        <form action="/return_analysis" method="post">
+          {% csrf_token %}
+          <div class="select-div inside-grid-div">
+            <select id="player_name" name="player_name">
+                {% for batter in batters %}
+                    <option value="{{batter.name}}">{{batter.name}}</option>
+                {% endfor %}
+                {% for bowler in bowlers %}
+                    <option value="{{bowler.name}}">{{bowler.name}}</option>
+                {% endfor %}
+            </select>
+            <button id="btn-choose-player" type="submit" class="btn btn-secondary btn-choose-player">Analyse</button>
+          </div>
+        </form> 
+    </div>
+
+    <div class="btn-all">
+      <a class="btn btn-dark btn-all" data-bs-toggle="collapse" href="#collapseBatter" role="button" aria-expanded="false" aria-controls="collapseBatter">
+        Click for batter
+      </a>
+    </div>
+    <div class="container collapse" id="collapseBatter">
+        <table class="table table-striped-columns">
+            <thead>
+              <tr>
+                <th scope="col">Player name</th>
+                <th scope="col">{{batter.name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Type</th>
+                <td>Batter</td>
+              </tr>
+              <tr>
+                <th scope="row">Runs scored</th>
+                <td>{{batter.runs_scored}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Balls faced</th>
+                <td>{{batter.balls_faced}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Dismissal type</th>
+                <td>{{batter.dismissal_type}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Sixes hit</th>
+                <td>{{batter.sixes_hit}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Fours hit</th>
+                <td>{{batter.fours_hit}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Boundary percentage</th>
+                <td>{{boundary_percentage}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Ball per boundary</th>
+                <td>{{ball_per_boundary}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Strike rate</th>
+                <td>{{strike_rate}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Dot balls</th>
+                <td>{{batter.dots_played}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Dot ball percentage</th>
+                <td>{{dot_ball_percentage}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>     
+       
+    <div class="btn-all">
+      <a class="btn btn-dark btn-all" data-bs-toggle="collapse" href="#collapseBowler" role="button" aria-expanded="false" aria-controls="collapseBowler">
+        Click for bowler
+      </a>
+    </div>
+    <div class="container collapse" id="collapseBowler">
+        <table class="table table-striped-columns">
+            <thead>
+              <tr>
+                <th scope="col" class="tbl-data">Player name</th>
+                <th scope="col" class="tbl-data">{{bowler.name}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="tbl-data">Type</th>
+                <td class="tbl-data">Bowler</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Wickets taken</th>
+                <td class="tbl-data">{{bowler.wickets_taken}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Runs conceded</th>
+                <td class="tbl-data">{{bowler.runs_conceded}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Overs bowled</th>
+                <td class="tbl-data">{{bowler.overs_bowled}}.{{bowler.balls_bowled}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Economy</th>
+                <td class="tbl-data">{{bowler.economy}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Dots bowled</th>
+                <td class="tbl-data">{{bowler.dots_bowled}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Strike rate</th>
+                <td class="tbl-data">{{strike_rate}}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="tbl-data">Average</th>
+                <td class="tbl-data">{{average}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="btn-all">
+      <a class="btn btn-secondary btn-all" href="/innings_end" role="button" styles="display: block;">Menu</a>
+      <a class="btn btn-secondary btn-all" href="/player_analysis" role="button" styles="display: block;">Choose another player</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

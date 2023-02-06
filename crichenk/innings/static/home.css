@@ -1,0 +1,20 @@
+.heading-text-span {
+    color: #a98467;
+}
+
+.welcome-text {
+    background-color: #ddb892;
+    border-radius: 9px;
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 2% 2%;
+    text-align: center;
+    width: 30%;
+}
+
+.btn-all {
+    margin-top: 2%;
+    text-align: center;
+}

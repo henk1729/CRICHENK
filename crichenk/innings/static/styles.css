@@ -1,0 +1,11 @@
+body {
+    padding: 2% 6%;
+}
+
+.heading-text {
+    color: #7c6a0a;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    padding-bottom: 3%;
+    text-align: center;
+}

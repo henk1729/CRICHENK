@@ -1,0 +1,65 @@
+h6::before {
+    counter-increment: section;
+    content: counter(section) "";
+}
+
+.container {
+    background-color: black;
+    border-radius: 8px;
+    padding: 2% 2%;
+    counter-reset: section;
+}
+
+.over-heading {
+    background-color: #6c757d;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+.tbl-timeline {
+    padding: 0 2% 2%;
+    text-align: center;
+}
+
+.attribute-col {
+    color: #6c757d;
+    padding: 1% 0;
+    width: 150px;
+}
+
+.field-col {
+    padding: 1% 0;
+    width: 100px;
+}
+
+.ball-row {
+    color: white;
+    background-color: #6a4c93;
+}
+
+.main-event-row {
+    color: white;
+    background-color: #ff595e;
+}
+
+.runs-row {
+    color: white;
+    background-color: #ffca3a;
+}
+
+.side-event-row {
+    color: white;
+    background-color: #8ac926;
+}
+
+.batter-row {
+    color: white;
+    background-color: #1982c4;
+}
+
+.btn-all {
+    margin-top: 2%;
+    text-align: center;
+}

@@ -1,0 +1,32 @@
+table {
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto 3%;
+}
+
+.tbl-view {
+    color: #8b5e34;
+}
+
+.tbl-col {
+    font-size: 0.9rem;
+}
+
+.tbl-col-score {
+    font-size: 1.3rem;
+}
+
+.tbl-text {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.tbl-head {
+    font-size: 1.1rem;
+}
+
+.btn-all {
+    margin-top: 2%;
+    text-align: center;
+}

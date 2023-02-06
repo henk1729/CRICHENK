@@ -1,0 +1,330 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Play</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <link href="{% static 'edit_over.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="heading-text">LET'S PLAY</div>
+
+    <div class="match-status">
+
+      <div class="score-board">
+        <div class="strikers">
+          <div>*{{striker.name}} {{striker.runs_scored}}({{striker.balls_faced}})</div>
+          <div>{{non_striker.name}} {{non_striker.runs_scored}}({{non_striker.balls_faced}})</div>
+        </div>
+        <div class="score">
+          <div>{{score}}-{{wickets}} ({{over_number}}.{{ball_number}})</div>
+          <div>{{bowler.name}} {{bowler.wickets_taken}}-{{bowler.runs_conceded}} ({{bowler.overs_bowled}}.{{bowler.balls_bowled}})</div>
+        </div>
+      </div>
+
+      <div class="flash-message warning">
+        <div class="flash-message-text">{{warning}}</div>
+      </div>
+      <div class="flash-message success">
+        <div class="flash-message-text">{{success}}</div>
+      </div>
+      <div class="flash-message failure">
+        <div class="flash-message-text">{{failure}}</div>
+      </div>
+
+    </div>
+
+    <div class="match-status this-over-div">THIS OVER:   {{this_over}}</div>
+
+    <div class="container">
+      <form action="/add_ball" method="post" id="input-form">
+        {% csrf_token %}
+        <h4 class="container-head"><strong>Add ball</strong></h4>
+
+        <div class="input-form">
+
+          <div class="label-head inside-grid-div">Mainevent</div>
+          <div class="main-event-div inside-grid-div">
+            <select id="main_event" name="main_event" onchange="addDropDown(this.value)">
+              <option selected="selected" value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="wide">Wide</option>
+              <option value="legbye">Leg bye</option>
+              <option value="bye">Bye</option>
+              <option value="noball">No ball</option>
+              <option value="bowled">Bowled</option>
+              <option value="lbw">LBW</option>
+              <option value="caught">Caught</option>
+              <option value="stumped">Stumped</option>
+              <option value="hitwicket">Hit wicket</option>
+              <option value="runout">Run out</option>
+            </select>
+          </div>
+
+          <div class="label-head inside-grid-div">Runs</div>
+          <div class="runs-div inside-grid-div">
+            <select id="runs" name="runs">
+              <option selected="selected" value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="newlyAddedDropdown">
+          <div id="dropdownContainer"></div>
+            
+        </div>
+        <div class="submit-btn"><input type="submit" class="btn btn-secondary"></div>
+      </form>
+    </div>
+
+    <div class="btn-all">
+      <a class="btn btn-secondary btn-all" href="/view_score" role="button">View Scoreboard</a>
+      <a class="btn btn-secondary btn-all" href="/innings_end" role="button">Menu</a>
+    </div>
+      
+      <script>
+        var eventsWithSideEventsPossible=["wide", "legbye", "bye", "noball"];
+
+        function addDropDown(selectedOption) {
+          if (selectedOption === "wide") {
+            var select = document.createElement("select");
+            select.id="side_event";
+            select.name="side_event";
+            var options = ["", "stumped", "runout"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="None";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text = "Stumped";
+              }
+              else{
+                option.text="Run out";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="Side event";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+
+            var select=document.createElement("select");
+            select.id="end";
+            select.name="end";
+            var options=["", "batting", "bowling"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Batting";
+              }
+              else{
+                option.text="Bowling";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="End";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+
+            var select=document.createElement("select");
+            select.id="crossed_over";
+            select.name="crossed_over";
+            var options=["", "yes", "no"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Yes";
+              }
+              else{
+                option.text="No";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="Crossed over?";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+          }
+          else if(selectedOption==="legbye" || selectedOption==="bye" || selectedOption==="noball"){
+            var select = document.createElement("select");
+            select.id="side_event";
+            select.name="side_event";
+            var options = ["", "runout"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="None";
+                option.selected="selected";
+              }
+              else{
+                option.text="Run out";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="Side event";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+
+            var select=document.createElement("select");
+            select.id="end";
+            select.name="end";
+            var options=["", "batting", "bowling"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Batting";
+              }
+              else{
+                option.text="Bowling";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="End";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+
+            var select=document.createElement("select");
+            select.id="crossed_over";
+            select.name="crossed_over";
+            var options=["", "yes", "no"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Yes";
+              }
+              else{
+                option.text="No";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="Crossed over?";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+          }
+          else if(selectedOption==="runout"){
+            var select=document.createElement("select");
+            select.id="end";
+            select.name="end";
+            var options=["", "batting", "bowling"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Batting";
+              }
+              else{
+                option.text="Bowling";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="End";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+
+            var select=document.createElement("select");
+            select.id="crossed_over";
+            select.name="crossed_over";
+            var options=["", "yes", "no"];
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              if(i==0){
+                option.text="NA";
+                option.selected="selected";
+              }
+              else if(i==1){
+                option.text="Yes";
+              }
+              else{
+                option.text="No";
+              }
+              select.appendChild(option);
+            }
+            select.className="newSelectClass";
+            var label=document.createElement("label");
+            label.innerHTML="Crossed over?";
+            label.htmlFor=select.id;
+            document.getElementById("dropdownContainer").appendChild(label);
+            document.getElementById("dropdownContainer").appendChild(select);
+          }
+        }
+      </script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+table {
+    border-radius: 9px;
+    width: 30%;
+}
+
+thead,
+tbody,
+.tbl-data {
+    color: white;
+}
+
+.label {
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+.input-form,
+.container {
+    background-color: black;
+    border-radius: 8px;
+    margin: 1% auto 2%;
+    padding: 2% 3%;
+    width: 25%;
+}
+
+.btn-choose-player {
+    margin-left: 40%;
+}
+
+.container {
+    background-color: #4d908e;
+    width: 40%;
+}
+
+.btn-all {
+    margin-top: 1%;
+    text-align: center;
+}

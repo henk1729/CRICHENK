@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>End of Innings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <link href="{% static 'innings_end.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="heading-text">END OF INNINGS</div>
+
+    <div class="btn-all">
+        <div>
+          <a class="btn btn-secondary btn-all" href="/on_reload_edit_over" role="button">Back to playing</a>
+          <a class="btn btn-secondary btn-all" href="/view_score" role="button">View Scoreboard</a>
+        </div>
+        <div>
+          <a class="btn btn-secondary btn-all" href="/show_timeline" role="button">Show Timeline</a>
+          <a class="btn btn-secondary btn-all" href="/player_analysis" role="button">Player Analysis</a>
+        </div>
+        <div>
+          <a class="btn btn-secondary btn-all" href="/edit_over" role="button">Restart with same players</a>
+          <a class="btn btn-secondary btn-all" href="/index" role="button">Restart with different players</a>
+        </div>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

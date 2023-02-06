@@ -1,0 +1,105 @@
+h4 {
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    padding-bottom: 4%;
+}
+
+label {
+    color: white;
+}
+
+.flash-message {
+    border-radius: 5px;
+    margin-top: 2%;
+    padding: 0 2%;
+}
+
+.warning {
+    background-color: #ff0a54;
+}
+
+.success {
+    background-color: #80b918;
+    margin-top: 1%;
+}
+
+.failure {
+    background-color: #2196f3;
+    margin-top: 1%;
+}
+
+.flash-message-text {
+    color: white;
+    font-family: 'Righteous', cursive;
+    text-align: center;
+}
+
+.score-board {
+    color: white;
+    display: grid;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 0.95rem;
+    grid-template-columns: 31rem 31rem;
+}
+
+.score {
+    text-align: right;
+}
+
+.match-status,
+.container {
+    background-color: black;
+    border-radius: 12px;
+    margin: 2% auto;
+    padding: 2% 3%;
+    width: 80%;
+}
+
+.this-over-div {
+    background-color: #4a4e69;
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.label-head {
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.input-form {
+    background-color: black;
+    border-radius: 2%;
+    width: 35%;
+    display: grid;
+    grid-template-columns: 10rem 10rem 10rem 10rem;
+}
+
+.main-event-div,
+.runs-div {
+    padding-bottom: 25%;
+}
+
+.newlyAddedDropdown {
+    background-color: #4a4e69;
+    border-radius: 9px;
+    display: grid;
+    grid-template-columns: 10rem 10rem 10rem;
+    font-family: 'Fira Sans', sans-serif;
+    padding: 2%;
+}
+
+.newSelectClass {
+    margin: 0 80% 20%;
+}
+
+.submit-btn {
+    display: block;
+    margin-top: 2%;
+    text-align: center;
+}
+
+.btn-all {
+    margin-top: 2%;
+    text-align: center;
+}

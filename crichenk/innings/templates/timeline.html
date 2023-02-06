@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <link href="{% static 'timeline.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="heading-text">TIMELINE</div>
+
+    <div class="main-container">
+
+        {% for over_number, over in overs.items %}
+            <div class="container">
+                <div class="over-heading">OVER {{over_number}}</div>
+
+                    <table class="table-bordered tbl-timeline">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="attribute-col ball-cell">Ball</th>
+                                {% for ball_id, ball in over.items %}
+                                    <th scope="col" class="field-col ball-row"><h6></h6></th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="attribute-col main-event-cell">Main-event</th>
+                                {% for ball_id, ball in over.items %}
+                                    <td class="field-col main-event-row">{{ball.main_event}}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="attribute-col runs-cell">Runs</th>
+                                {% for ball_id, ball in over.items %}
+                                    <td class="field-col runs-row">{{ball.runs}}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="attribute-col side-event-cell">Side-event</th>
+                                {% for ball_id, ball in over.items %}
+                                    <td class="field-col side-event-row">{{ball.side_event}}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th scope="row" class="attribute-col batter-cell">Striker</th>
+                                {% for ball_id, ball in over.items %}
+                                    <td class="field-col batter-row">{{ball.batter}}</td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div> 
+            <br>
+        {% endfor %}
+
+    </div>
+
+    <div class="btn-all">
+        <a class="btn btn-secondary btn-all" href="/innings_end" role="button">Menu</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
