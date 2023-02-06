@@ -5,7 +5,7 @@ from .models import Batter, Ball, Bowler
 
 admin.site.register(Batter)
 class BatterAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'runs_scored', 'balls_faced', 'dismissal_type']
+    list_display = ['id', 'name', 'runs_scored', 'balls_faced', 'dismissal_type', 'sixes_hit', 'fours_hit', 'dots_played']
 
 admin.site.register(Ball)
 class BallAdmin(admin.ModelAdmin):
