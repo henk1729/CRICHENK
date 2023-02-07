@@ -51,5 +51,3 @@ The button `Player Analysis` will take the user to analysis page where he/she is
 
 ### Restart
 On the menu page, the user is provided with two more choices: `Restart with same players` and `Restart with different players`. These button serve what they read; clicking on them restarts the game with same players (and same batting and bowling order) or restarts the game with new players that the user has to provide.  
-  
-Have fun! :)
