@@ -41,15 +41,27 @@ In this way the user is required to submit ball-event for each ball.
 There's an interactive scoreboard summarizer at the top of the page. It shows striker (with a `*`), non-striker, current bowler and their individual scores alongwith current score. The message area in the summarizer announces warnings and special-events in the game. There is also a 'THIS OVER' area atop event-selection pane which shows current-over ball-events at a glance.
 
 ### View Scoreboard
+
+![Alt text](images/scoreboard.png)
+
 The user can view the scoreboard any time by clicking on `View Scoreboard` button at the bottom of the page.
 
 ### Menu
+
+![Alt text](images/menu.png)
+
 The menu page can be toggled to through `Menu` button on edit-over and scoreboard pages. It provides a variety of buttons.
 
 ### Show Timeline
+
+![Alt text](images/timeline.png)
+
 To summarise ball-by-ball happening of the game in the middle of it or once it is finished, the user can visit timeline page by clicking on `Show Timeline` button on menu page.
 
 ### Player Analysis
+
+![Alt text](images/player_analysis.png)
+
 The button `Player Analysis` will take the user to analysis page where he/she is required to choose among the list of players provided in the beginning of the game. After selecting one of the players and clicking `Analyse`, the user has to click one of the collapse buttons, depending upon type of player (batter or bowler). The collapsed window shows chosen player analysis. To select some different player, click on `Choose another player` and perform same steps.
 
 ### Restart
