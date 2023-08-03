@@ -1,5 +1,5 @@
 # CRICHENK
-###### An analysis Cricket single-innings-game
+###### A Cricket single-innings analysis game
 
 ## About
 This is a cricket analysis platform where the user provides data in the form of ball-happenings or ball-events for each ball bowled. Though user-friendly, a basic knowledge of Cricket is expected to play along.
