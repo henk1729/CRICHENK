@@ -35,6 +35,9 @@ Out of these, the `main-event` and `runs` fields are mandatory for each ball. `s
 In this way the user is required to submit ball-event for each ball. 
 
 ### Interactive Summarizer
+
+![Alt text](images/interactive_summarizer.png)
+
 There's an interactive scoreboard summarizer at the top of the page. It shows striker (with a `*`), non-striker, current bowler and their individual scores alongwith current score. The message area in the summarizer announces warnings and special-events in the game. There is also a 'THIS OVER' area atop event-selection pane which shows current-over ball-events at a glance.
 
 ### View Scoreboard
