@@ -31,7 +31,7 @@ Out of these, the `main-event` and `runs` fields are mandatory for each ball. `s
 
 `runs` is applicable only if `main-event` is a subset of `extra_events` or that of `wicket_events` if it's a free-hit. It can contain the values `0`, `1`, `2`, `3`, `4`, `5` and `6` specifying runs scored in the current event. Note that the `runs` field is `0` if `main-event` is a subset of `runs_events` as runs scored on such an event is directly implied by the `main-event`.    
 
-`side-event` contains the value `runout` if `main-event` is a subset of `extra_events` and also contains `stumped` if `main-event` is `wide`, although a default option `none` is selected implying no `sde-event` did actually happen.  
+`side-event` contains the value `runout` if `main-event` is a subset of `extra_events` and also contains `stumped` if `main-event` is `wide`, although a default option `none` is selected implying no `side-event` did actually happen.  
   
 `end` and `crossed-over` too have their default values set to `na` (not applicable). Only if it's a run-out, that these fields really make sense.  
    
